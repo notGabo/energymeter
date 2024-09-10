@@ -17,6 +17,13 @@ export function RegisterForm() {
   return (
     <>
       <Card className="w-full max-w-sm">
+      <form
+            action={async () => {
+              "use server";
+              await signIn("google");
+            }}
+            className="w-full"
+          >
         <CardHeader>
           <CardTitle className="text-2xl">Registrarse</CardTitle>
           <CardDescription>
@@ -64,19 +71,12 @@ export function RegisterForm() {
         <CardFooter>
           <Button className="w-full">Registarse</Button>
           <Separator />
-          <form
-            action={async () => {
-              "use server";
-              await signIn("google");
-            }}
-            className="w-full"
-          >
             <Button className="flex w-full">
               <GoogleIcon />
               <p className="ml-2">Iniciar sesión con Google</p>
             </Button>
-          </form>
         </CardFooter>
+          </form>
       </Card>
     </>
   );
